@@ -223,6 +223,42 @@ class ActionSliderController extends ChangeNotifier
       _setStatus(SliderStatus.loading(
           expanded: expanded, side: side, highlighted: highlighted));
 
+  void loadingSmart(BuildContext context) {
+    final direction = Directionality.of(context);
+    final side =
+        direction == TextDirection.rtl ? SliderSide.start : SliderSide.end;
+
+    _setStatus(
+      SliderStatus.loading(
+        expanded: true,
+        side: side,
+        highlighted: false,
+      ),
+    );
+  }
+
+  void resetSmart(BuildContext context, {bool highlighted = false}) {
+    final direction = Directionality.of(context);
+    final side =
+        direction == TextDirection.rtl ? SliderSide.start : SliderSide.end;
+
+    _setStatus(SliderStatus.standard(highlighted: highlighted));
+  }
+
+  void successSmart(BuildContext context) {
+    final direction = Directionality.of(context);
+    final side =
+        direction == TextDirection.rtl ? SliderSide.start : SliderSide.end;
+
+    _setStatus(
+      SliderStatus.success(
+        expanded: true,
+        side: side,
+        highlighted: true,
+      ),
+    );
+  }
+
   /// Resets the slider to its standard expanded status.
   ///
   /// {@macro action_slider.status.highlighted}
