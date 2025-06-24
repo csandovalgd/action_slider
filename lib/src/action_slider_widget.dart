@@ -247,8 +247,9 @@ class ActionSliderController extends ChangeNotifier
 
   void successSmart(BuildContext context) {
     final direction = Directionality.of(context);
-    final side =
-        direction == TextDirection.rtl ? SliderSide.start : SliderSide.end;
+    final side = direction == TextDirection.rtl
+        ? SliderSide.start
+        : SliderSide.end;
 
     _setStatus(
       SliderStatus.success(
